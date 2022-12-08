@@ -2,6 +2,8 @@ import Artworks from "./components/Artworks";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Alert from "./components/Alert";
+import Loading from "./components/Loading";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
       </div>
       <Artworks />
       <Footer />
+      <Alert />
+      <Loading />
     </div>
   );
 };
