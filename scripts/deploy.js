@@ -5,7 +5,7 @@ async function main() {
   const base_uri =
     "https://ipfs.io/ipfs/QmTWbe9wDns7aqZQNCuWh5PqybGbBF91kngC5Zf8qmCoyg/";
   const Contract = await ethers.getContractFactory("Adulam");
-  const contract = await Contract.deploy("Genesis NFT", "GNS", base_uri);
+  const contract = await Contract.deploy("Adulam NFT", "ADM", base_uri);
 
   await contract.deployed();
 

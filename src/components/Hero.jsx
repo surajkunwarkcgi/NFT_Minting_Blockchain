@@ -5,8 +5,21 @@ import facebook from "../assets/facebook_icon.png";
 import twitter from "../assets/twitter_icon.png";
 import linkedIn from "../assets/linkedIn_icon.png";
 import medium from "../assets/medium_icon.png";
+import { setAlert, setGlobalState, useGlobalState, truncate } from "../store";
+import { payToMint } from "../Adulam";
 
 function Hero() {
+  const [nfts] = useGlobalState("nfts");
+  const [connectedAccount] = useGlobalState("connectedAccount");
+
+  const onMintNFT = async () => {
+    setGlobalState("loading", { show: true, msg: "Minting new NFT..." });
+
+    await payToMint()
+      .then(() => setAlert("Minting Successful...", "green"))
+      .catch(() => setGlobalState("loading", { show: false, msg: "" }));
+  };
+
   return (
     <div
       className="bg-[url('https://cdn.pixabay.com/photo/2022/03/01/02/51/galaxy-7040416_960_720.png')]
@@ -27,6 +40,7 @@ function Hero() {
         <button
           className="shadow-xl shadow-black text-white bg-[#e32970]
     hover:bg-[#bd255f] p-2 rounded-full cursor-pointer my-4"
+          onClick={onMintNFT}
         >
           Mint Now
         </button>
@@ -42,7 +56,7 @@ function Hero() {
             alt="profile image"
           />
           <div className="flex flex-col font-semibold text-white">
-            <span>0434refere</span>
+            <span>{truncate(connectedAccount, 4, 4, 12)}</span>
             <span className="text-[#e32970]">Suraj</span>
           </div>
         </a>
@@ -100,7 +114,7 @@ function Hero() {
             hover:bg-[#bd255f] hover:text-white transition-all
             duration-75 delay-100"
         >
-          <span className="text-xs font-bold">99</span>
+          <span className="text-xs font-bold">{nfts.length}/99</span>
         </div>
       </div>
     </div>

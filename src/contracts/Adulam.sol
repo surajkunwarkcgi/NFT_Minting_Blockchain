@@ -19,7 +19,7 @@ contract Adulam is ERC721Enumerable, Ownable {
         address indexed buyer,
         uint256 cost,
         string indexed tokenURI,
-        uint256 timeStamp
+        uint256 timestamp
     );
 
     struct SaleStruct {
@@ -27,7 +27,7 @@ contract Adulam is ERC721Enumerable, Ownable {
         address buyer;
         uint256 cost;
         string imageURL;
-        uint256 timeStamp;
+        uint256 timestamp;
     }
 
     SaleStruct[] minted;
